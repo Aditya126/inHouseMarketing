@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,8 @@ class IResourceServiceImplTest {
 		res1.add(e);
 		em.persist(e);
 		List<Resource> get = resourceService.getAllResources("help", "buy");
-		e.equals(get);
-//		Assertions.assertEquals(e, get);
+		
+		Assertions.assertEquals(1, get.size());
 	}
 
 	@Test
@@ -54,7 +55,7 @@ class IResourceServiceImplTest {
 		em.persist(e);
 		List<Resource> get = resourceService.getAllResources(emp1.getEmpId());
 		e.equals(get);
-//		Assertions.assertEquals(e, get);
+		Assertions.assertEquals(1, get.size());
 	}
 
 }

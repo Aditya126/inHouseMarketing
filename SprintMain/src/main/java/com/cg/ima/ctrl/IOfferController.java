@@ -35,9 +35,9 @@ public class IOfferController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping("/add")
 	public ResponseEntity<Offer> addOffer(@RequestBody Offer off) {
-		System.out.println("req data = " + off);
+		
 		Offer offer = oServive.addOffer(off);
-		System.out.println("req data = " + offer);
+		
 
 		return new ResponseEntity<>(offer, HttpStatus.OK);
 	}
