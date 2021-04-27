@@ -24,11 +24,12 @@ public class IUserServiceImpl implements IUserService {
 	 * This function is used to login and create a session
 	 */
 	@Override
-	public User login(User user) {
+	public User login(User user){
 		User user1 = userDao.findByUser(user.getUserId(), user.getPassword());
-		userid = user1.getUserId();
-		if (user1 != null)
-			logger.info("********"+user.getUserId() + "loggedin");
+		if (user1 != null) {
+			userid = user1.getUserId();
+			logger.info("********"+user.getUserId() + " loggedin");
+		}
 		return user1;
 	}
 
@@ -38,7 +39,7 @@ public class IUserServiceImpl implements IUserService {
 	@Override
 	public User logout() {
 		if (userid != null)
-			logger.info("********"+userid + "loggedout");
+			logger.info("********"+userid + " loggedout");
 		User user2 = userDao.findByUserId(userid);
 		userid = "";
 		return user2;
@@ -49,9 +50,9 @@ public class IUserServiceImpl implements IUserService {
 	 */
 	@Override
 	public User addUser(User user) {
-		logger.info("********Adding user" +user);
+		logger.info("********Adding user: " +user);
 		User user1 = userDao.save(user);
-		logger.info("********User added" + user1);
+		logger.info("********User added: " + user1);
 		return user1;
 	}
 
@@ -60,10 +61,12 @@ public class IUserServiceImpl implements IUserService {
 	 */
 	@Override
 	public User editUser(User user) {
-		logger.info("********Updating User" +user);
+		logger.info("********Updating User: " +user);
 		User user1 = userDao.findByUserId(user.getUserId());
+		if(user1!=null) {
 		user1.setPassword(user.getPassword());
-		logger.info("********User updated" + user1);
+		}
+		logger.info("********User updated: " + user1);
 		return user1;
 	}
 
@@ -72,10 +75,12 @@ public class IUserServiceImpl implements IUserService {
 	 */
 	@Override
 	public User removeUser(String userId) {
-		logger.info("********Deleting User of id" +userId);
+		logger.info("********Deleting User of id: " +userId);
 		User user1 = userDao.findByUserId(userId);
+		if(user1!=null) {
 		userDao.deleteByUserId(userId);
-		logger.info("********User deleted" + user1);
+		}
+		logger.info("********User deleted: " + user1);
 		return user1;
 
 	}
