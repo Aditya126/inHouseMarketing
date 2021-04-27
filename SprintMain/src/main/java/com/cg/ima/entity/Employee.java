@@ -43,10 +43,12 @@ public class Employee {
 		super();
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", empName=" + empName + ", deptName=" + deptName + ", location=" + location
-				+ "]";
+				+ ", user=" + user + "]";
 	}
 
 	public Employee(String empName, String deptName, String location, User user) {
@@ -85,11 +87,13 @@ public class Employee {
 		this.location = location;
 	}
 
-	public User getSuser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setSuser(User suser) {
-		this.user = suser;
+	public void setUser(User user) {
+		this.user = user;
 	}
+
+	
 }
