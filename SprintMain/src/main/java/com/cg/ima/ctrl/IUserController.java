@@ -44,7 +44,7 @@ public class IUserController {
 			notes = new ArrayList<>();
 		}
 		notes.add(note);
-		System.out.println("notes= " + notes);
+		logger.debug("notes= " + notes);
 		request.getSession().setAttribute("NOTES_SESSION", notes);
 		return loginUser;
 	}
@@ -91,8 +91,8 @@ public class IUserController {
 	@GetMapping("/getsessions")
 	public List<String> getSessions(HttpServletRequest request) {
 		List<String> sessions = (List<String>) request.getSession().getAttribute("NOTES_SESSION");
-		System.out.println("Session ID: " + request.getSession().getId());
-		System.out.println("getting sessions: " + sessions);
+		logger.debug("Session ID: " + request.getSession().getId());
+		logger.debug("getting sessions: " + sessions);
 		return sessions;
 	}
 

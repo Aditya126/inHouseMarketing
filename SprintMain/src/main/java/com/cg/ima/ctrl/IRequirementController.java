@@ -34,9 +34,9 @@ public class IRequirementController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping("/add")
 	public ResponseEntity<Requirement> addRequirement(@RequestBody Requirement req) {
-		System.out.println("req data = " + req);
+		
 		Requirement requirement = rService.addRequirement(req);
-		System.out.println("req data = " + requirement);
+		
 
 		return new ResponseEntity<Requirement>(requirement, HttpStatus.OK);
 	}
