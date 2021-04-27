@@ -41,7 +41,7 @@ public class IUserController {
 			HttpServletRequest request) {
 		User loginUser = userService.login(user);
 		if (loginUser == null) {
-			logger.debug("Sorry! userId or password is incorrect");
+			logger.info("Sorry! userId or password is incorrect");
 			return new ResponseEntity<User>(loginUser, HttpStatus.NOT_FOUND);
 		}
 		else
@@ -63,7 +63,7 @@ public class IUserController {
 		if (logoutUser == null) {
 			return "Not Loggedin";
 		}
-		logger.debug("Invalidating session");
+		logger.info("Invalidating session");
 		request.getSession().invalidate();
 		return "Session invalidated";
 	}
@@ -72,7 +72,7 @@ public class IUserController {
 	public ResponseEntity<User> addsUser(@RequestBody @Valid User user) {
 		User addedUser = userService.addUser(user);
 		if (addedUser == null) {
-			logger.debug("User cannot be added");
+			logger.info("User cannot be added");
 			return new ResponseEntity<User>(addedUser, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<User>(addedUser, HttpStatus.OK);
@@ -82,7 +82,7 @@ public class IUserController {
 	public ResponseEntity<User> updateUser(@RequestBody @Valid User user) {
 		User updatedUser = userService.editUser(user);
 		if (updatedUser == null) {
-			logger.debug("User cannot be updated");
+			logger.info("User cannot be updated");
 			return new ResponseEntity<User>(updatedUser, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<User>(updatedUser, HttpStatus.OK);
@@ -93,7 +93,7 @@ public class IUserController {
 		User deletedUser = null;
 		deletedUser = userService.removeUser(userId);
 		if (deletedUser == null) {
-			logger.debug("User cannot be deleted");
+			logger.info("User cannot be deleted");
 			return new ResponseEntity<User>(deletedUser, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<User>(deletedUser, HttpStatus.OK);
@@ -102,8 +102,8 @@ public class IUserController {
 	@GetMapping("/getsessions")
 	public List<String> getSessions(HttpServletRequest request) {
 		List<String> sessions = (List<String>) request.getSession().getAttribute("NOTES_SESSION");
-		logger.debug("Session ID: " + request.getSession().getId());
-		logger.debug("getting sessions: " + sessions);
+		logger.info("Session ID: " + request.getSession().getId());
+		logger.info("getting sessions: " + sessions);
 		return sessions;
 	}
 
