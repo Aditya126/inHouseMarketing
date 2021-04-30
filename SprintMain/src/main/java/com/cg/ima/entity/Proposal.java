@@ -41,7 +41,7 @@ public class Proposal {
 	private Resource resource;
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "empId")
-	@NotNull
+	
 
 	private Employee emp;
 

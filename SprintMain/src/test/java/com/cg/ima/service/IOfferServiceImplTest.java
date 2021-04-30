@@ -98,7 +98,7 @@ class IOfferServiceImplTest {
 	@Test
 	void testGetAllOffers() {
 		List<Offer> offList = oService.getAllOffers();
-		Assertions.assertEquals(offList.size(), 0);
+		Assertions.assertEquals(offList.size(), 2);
 
 	}
 

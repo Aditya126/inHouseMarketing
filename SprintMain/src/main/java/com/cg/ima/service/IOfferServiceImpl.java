@@ -29,9 +29,9 @@ public class IOfferServiceImpl implements IOfferService {
 	@Override
 	public Offer addOffer(Offer offer) {
 		logger.info("********Adding Offer" +offer);
-		Offer off = edao.save(offer);
-		logger.info("********Added Offer" +off);
-		return off;
+		Offer addedOffer = edao.save(offer);
+		logger.info("********Added Offer" +addedOffer);
+		return addedOffer;
 	}
 
 	/**
@@ -45,10 +45,10 @@ public class IOfferServiceImpl implements IOfferService {
 			throw new InvalidOfferException("Offer not found for id = " + offer.getOfferId());
 
 		}
-		Offer off = opt.get();
-		off.setIsAvailable(offer.getIsAvailable());
-		logger.info("********Edited Offer" +off);
-		return off;
+		Offer editOff = opt.get();
+		editOff.setIsAvailable(offer.getIsAvailable());
+		logger.info("********Edited Offer" +editOff);
+		return editOff;
 	}
 
 	/**
@@ -73,10 +73,10 @@ public class IOfferServiceImpl implements IOfferService {
 	@Override
 	public Offer removeOffer(int offerId) {
 		logger.info("********Deleting Offer by id" +offerId);
-		Offer offer = getOffer(offerId);
+		Offer removedOffer = getOffer(offerId);
 		edao.deleteById(offerId);
-		logger.info("********Deleted Offer" +offer);
-		return offer;
+		logger.info("********Deleted Offer" +removedOffer);
+		return removedOffer;
 	}
 
 	/**
