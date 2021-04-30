@@ -26,7 +26,7 @@ import com.cg.ima.exception.InvalidRequirementException;
 @DataJpaTest
 @Import(IRequirementServiceImpl.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class IRequirementServiceImplTest {
+ class IRequirementServiceImplTest {
 
 	@Autowired
 	private IRequirementService rService;
